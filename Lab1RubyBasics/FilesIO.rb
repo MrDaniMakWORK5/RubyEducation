@@ -57,16 +57,18 @@ def crazyMulty(num)
 end
 
 functions = Array[lambda {|arg| evenNumberCount(arg)}, lambda {|arg| digitMax(arg)}, lambda {|arg| crazyMulty(arg)}]
-puts ARGV[1]
-file = File.open("#{ARGV[1]}", "r")
-  line = readStream.gets
-  array = line.split(' ')
-  puts "---Line---"
-  for i in 0...array.length
-    num = array[i].to_i
-    puts "Function result: "
-    method = functions[ARGV[0]] 
+ 
+exit if(!File.exist?(ARGV[1])) 
+File.foreach(ARGV[1]){
+  |line|
+  array = line.split
+  puts "---Array---"
+  puts array
+  for num in array do
+    num = num.to_i
+    print "Function result for #{num}: "
+    method = functions[ARGV[0].to_i] 
     puts method.call(num)
   end
-#end
+}
 
