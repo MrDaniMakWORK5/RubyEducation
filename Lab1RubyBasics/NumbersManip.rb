@@ -25,6 +25,7 @@ end
 
 puts "Max digit is: #{digitMax(9532)}"
 
+
 def findLowestDivider(num)
   num.upto(num-1).drop(1).each{
     |div|
