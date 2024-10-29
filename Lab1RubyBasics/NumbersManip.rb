@@ -24,3 +24,42 @@ def digitMax(num)
 end
 
 puts "Max digit is: #{digitMax(9532)}"
+
+
+def findLowestDivider(num)
+  num.upto(num-1).drop(1).each{
+    |div|
+    if num % div == 0
+      return div
+    end
+  }
+end
+
+def findMaxNum(num)
+  max = 2
+  divider = findLowestDivider(num)
+  num.upto(num-1).drop(1).each{
+    |poten_max|
+    if poten_max % divider != 0 && poten_max > max
+      max = poten_max
+    end
+  }
+  return max
+end
+
+def digitSum(num)
+  sum = 0
+  num.digits.each{
+    |dig|
+    if dig < 5
+      sum += dig
+    end
+  }
+  return sum
+end
+
+def crazyMulty(num)
+  return (findMaxNum(num)*digitSum(num))
+end
+
+puts "Crazy multiply is: #{crazyMulty(12)}"
