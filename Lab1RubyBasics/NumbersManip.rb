@@ -11,3 +11,16 @@ def evenNumberCount(num)
 end
 
 puts "Amount of evens: #{evenNumberCount(10)}"
+
+def digitMax(num)
+  max_digit = 1
+  num.digits.each{
+    |digit|
+    if digit %3!=0 && digit > max_digit
+      max_digit = digit
+    end
+  }
+  return max_digit
+end
+
+puts "Max digit is: #{digitMax(9532)}"
